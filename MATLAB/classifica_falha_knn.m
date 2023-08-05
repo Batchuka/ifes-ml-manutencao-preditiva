@@ -22,15 +22,18 @@ if wavelet == 'NOT'
     cv = cvpartition(y,'HoldOut',0.3); % 30% dos dados para teste e 70 para treino.
     
     % Dados de Treino
+
     Xtrain = variaveis((cv.training),:);
     ytrain = y((cv.training),:);
     
     % Dados de Teste
+
     Xtest  = variaveis((cv.test),:);
     ytest  = y((cv.test),:);
     
     % Calcula os descritores estat�sticos dos sinais de vibra��o do
     % conjunto de treino.
+
     X = Xtrain;
     mat_descritores = descr_stat(X);
     descrXtrain = mat_descritores;
@@ -42,6 +45,7 @@ if wavelet == 'NOT'
     descrXtest = mat_descritores;
     
     %% Treina Modelo knn
+    
     mdl_knn = fitcknn(descrXtrain,ytrain,'Distance','euclidean','NumNeighbors',3);
 
     %% Valida o modelo utilizando Cross-Validation - k Folds
